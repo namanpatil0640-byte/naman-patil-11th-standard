@@ -685,7 +685,89 @@ function logout() {
   showHome();
 }
 </script>
+<script>
+function showLogin() {
+    document.getElementById("loginBox").style.display = "block";
+}
 
+function showSignup() {
+    document.getElementById("signupBox").style.display = "block";
+}
+
+function closeLogin() {
+    document.getElementById("loginBox").style.display = "none";
+}
+
+function closeSignup() {
+    document.getElementById("signupBox").style.display = "none";
+}
+
+function loginUser() {
+    let email = document.getElementById("loginEmail").value;
+    let password = document.getElementById("loginPassword").value;
+
+    let users = JSON.parse(localStorage.getItem("users") || "{}");
+
+    if (users[email] && users[email].password === password) {
+        currentUser = users[email];
+        closeLogin();
+        showHome();
+        alert("Login successful!");
+    } else {
+        alert("Email ya password galat hai");
+    }
+}
+
+function signupUser() {
+    let name = document.getElementById("signupName").value;
+    let email = document.getElementById("signupEmail").value;
+    let password = document.getElementById("signupPassword").value;
+
+    let users = JSON.parse(localStorage.getItem("users") || "{}");
+
+    if (users[email]) {
+        alert("Account already exists!");
+        return;
+    }
+
+    users[email] = {
+        name: name,
+        email: email,
+        password: password,
+        papers: 0,
+        scores: []
+    };
+
+    localStorage.setItem("users", JSON.stringify(users));
+
+    alert("Sign Up successful!");
+    closeSignup();
+}
+</script><div id="loginBox" style="display:none">
+    <h2>Login</h2>
+
+    <input id="loginEmail" type="email" placeholder="Email">
+
+    <input id="loginPassword" type="password" placeholder="Password">
+
+    <button onclick="loginUser()">Login</button>
+
+    <button onclick="closeLogin()">Close</button>
+</div>
+
+<div id="signupBox" style="display:none">
+    <h2>Sign Up</h2>
+
+    <input id="signupName" placeholder="Your Name">
+
+    <input id="signupEmail" type="email" placeholder="Email">
+
+    <input id="signupPassword" type="password" placeholder="Password">
+
+    <button onclick="signupUser()">Sign Up</button>
+
+    <button onclick="closeSignup()">Close</button>
+</div>
 </body>
   </html>
 
