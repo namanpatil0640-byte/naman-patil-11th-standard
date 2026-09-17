@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Naman Patil 11th Standard.com</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f7fb;
+  color: #102a43;
+}
+
+header {
+  background: #062b52;
+  color: white;
+  padding: 18px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+nav button {
+  background: #1683ff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 7px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+section {
+  padding: 55px 6%;
+}
+
+.hero {
+  background: linear-gradient(120deg, #062b52, #1264a3);
+  color: white;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: 42px;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+.btn {
+  background: #1683ff;
+  color: white;
+  border: none;
+  padding: 13px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.subjects {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px #0000000b;
+  text-align: center;
+}
+
+.card h3 {
+  margin: 15px 0;
+}
+
+.subject-btn {
+  margin-top: 15px;
+  width: 100%;
+}
+
+.auth {
+  max-width: 430px;
+  margin: 40px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px #00000012;
+}
+
+.auth input {
+  width: 100%;
+  padding: 13px;
+  margin: 9px 0;
+  border: 1px solid #ccd6e0;
+  border-radius: 7px;
+}
+
+.auth .btn {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.dashboard {
+  display: none;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 25px 0;
+}
+
+.stat {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.stat h2 {
+  color: #1683ff;
+  margin-top: 10px;
+}
+
+.question-box {
+  max-width: 700px;
+  margin: 30px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+}
+
+.option {
+  display: block;
+  padding: 14px;
+  margin: 12px 0;
+  border: 1px solid #dce4ed;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.option:hover {
+  background: #eef6ff;
+}
+
+#result {
+  display: none;
+  text-align: center;
+}
+
+footer {
+  background: #062b52;
+  color: white;
+  text-align: center;
+  padding: 25px;
+}
+
+@media(max-width: 700px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav {
+    width: 100%;
+  }
+
+  nav button {
+    margin: 5px 5px 0 0;
+  }
+
+  section {
+    padding: 35px 5%;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+  }
+
+  .subjects {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media(max-width: 400px) {
+  .subjects {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🎓 Naman Patil 11th Standard.com</div>
+
+  <nav>
+    <button onclick="showHome()">Home</button>
+    <button onclick="showAuth('login')">Login</button>
+    <button onclick="showAuth('signup')">Sign Up</button>
+  </nav>
+</header>
+
+<!-- HOME -->
+<div id="home">
+
+<section class="hero">
+  <div>
+    <h1>11th Standard Daily Practice</h1>
+    <p>
+      Maharashtra Board students के लिए Physics, Chemistry,
+      Mathematics और Biology की रोज़ाना प्रैक्टिस।
+    </p>
+    <button class="btn" onclick="showAuth('signup')">
+      Get Started →
+    </button>
+  </div>
+</section>
+
+<section>
+  <h2>Our Subjects</h2>
+  <p style="margin-top:10px">Choose your subject and start practicing.</p>
+
+  <div class="subjects">
+    <div class="card">
+      <div style="font-size:40px">⚛️</div>
+      <h3>Physics</h3>
+      <p>Daily Practice Paper</p>
+      <button class="btn subject-btn" onclick="startPractice('Physics')">
+        Practice Now
+      </button>
+    </div>
+
+    <div class="card">
+      <div style="font-size:40px">🧪</div>
+      <h3>Chemistry</h3>
+      <p>Daily Practice Paper</p>
+      <button class="btn subject-btn" onclick="startPractice('Chemistry')">
+        Practice Now
+      </button>
+    </div>
+
+    <div class="card">
+      <div style="font-size:40px">📐</div>
+      <h3>Mathematics</h3>
+      <p>Daily Practice Paper</p>
+      <button class="btn subject-btn" onclick="startPractice('Mathematics')">
+        Practice Now
+      </button>
+    </div>
+
+    <div class="card">
+      <div style="font-size:40px">🧬</div>
+      <h3>Biology</h3>
+      <p>Daily Practice Paper</p>
+      <button class="btn subject-btn" onclick="startPractice('Biology')">
+        Practice Now
+      </button>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- AUTH -->
+<div id="auth" style="display:none">
+  <div class="auth">
+    <h2 id="authTitle">Create Account</h2>
+    <p style="margin:12px 0">Join Naman Patil 11th Standard.com</p>
+
+    <div id="nameField">
+      <input id="name" placeholder="Full Name">
+    </div>
+
+    <input id="email" type="email" placeholder="Email">
+    <input id="password" type="password" placeholder="Password">
+
+    <button class="btn" onclick="submitAuth()">Continue</button>
+
+    <p id="authMessage" style="margin-top:15px"></p>
+
+    <p style="margin-top:20px">
+      <button onclick="showHome()">← Back to Home</button>
+    </p>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard" class="dashboard">
+
+<section>
+  <h1 id="welcome">Welcome!</h1>
+  <p style="margin-top:10px">Keep practicing, keep growing.</p>
+
+  <div class="stats">
+    <div class="stat">
+      <p>Current User</p>
+      <h2 id="userName">Student</h2>
+    </div>
+
+    <div class="stat">
+      <p>Papers Solved</p>
+      <h2 id="papersSolved">0</h2>
+    </div>
+
+    <div class="stat">
+      <p>Average Score</p>
+      <h2 id="averageScore">0%</h2>
+    </div>
+  </div>
+
+  <h2>Start Today's Practice</h2>
+
+  <div class="subjects">
+    <div class="card">
+      <h3>Physics</h3>
+      <button class="btn subject-btn" onclick="startPractice('Physics')">
+        Start Now
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>Chemistry</h3>
+      <button class="btn subject-btn" onclick="startPractice('Chemistry')">
+        Start Now
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>Mathematics</h3>
+      <button class="btn subject-btn" onclick="startPractice('Mathematics')">
+        Start Now
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>Biology</h3>
+      <button class="btn subject-btn" onclick="startPractice('Biology')">
+        Start Now
+      </button>
+    </div>
+  </div>
+
+  <br>
+
+  <button class="btn" onclick="logout()">Logout</button>
+</section>
+
+</div>
+
+<!-- PRACTICE -->
+<div id="practice" style="display:none">
+
+<section>
+  <div class="question-box">
+    <h2 id="practiceTitle">Daily Practice Paper</h2>
+    <p id="questionNumber" style="margin:15px 0"></p>
+
+    <h3 id="questionText"></h3>
+
+    <div id="options"></div>
+
+    <button class="btn" onclick="nextQuestion()">Next →</button>
+  </div>
+</section>
+
+</div>
+
+<!-- RESULT -->
+<div id="result">
+
+<section>
+  <div class="question-box">
+    <h2>🎉 Practice Completed!</h2>
+    <p style="margin:20px 0">Your Result</p>
+
+    <h1 id="scoreText"></h1>
+
+    <p id="correctText" style="margin:15px 0"></p>
+
+    <button class="btn" onclick="showDashboard()">
+      Back to Dashboard
+    </button>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  © 2026 Naman Patil 11th Standard.com
+</footer>
+
+<script>
+let currentUser = null;
+let authMode = "login";
+let currentSubject = "";
+let currentQuestion = 0;
+let score = 0;
+let selectedAnswer = null;
+
+const papers = {
+  Physics: [
+    {
+      q: "Which of the following is a unit of electric current?",
+      options: ["Volt", "Ampere", "Ohm", "Joule"],
+      answer: 1
+    },
+    {
+      q: "What is the SI unit of force?",
+      options: ["Watt", "Joule", "Newton", "Pascal"],
+      answer: 2
+    }
+  ],
+
+  Chemistry: [
+    {
+      q: "What is the atomic number of Hydrogen?",
+      options: ["1", "2", "8", "12"],
+      answer: 0
+    },
+    {
+      q: "Which particle has a negative charge?",
+      options: ["Proton", "Neutron", "Electron", "Nucleus"],
+      answer: 2
+    }
+  ],
+
+  Mathematics: [
+    {
+      q: "What is the value of 5²?",
+      options: ["10", "15", "20", "25"],
+      answer: 3
+    },
+    {
+      q: "What is the derivative of x²?",
+      options: ["x", "2x", "x²", "2"],
+      answer: 1
+    }
+  ],
+
+  Biology: [
+    {
+      q: "Which organelle is called the powerhouse of the cell?",
+      options: ["Nucleus", "Ribosome", "Mitochondria", "Golgi body"],
+      answer: 2
+    },
+    {
+      q: "What is the basic unit of life?",
+      options: ["Tissue", "Cell", "Organ", "Organ system"],
+      answer: 1
+    }
+  ]
+};
+
+function hideAll() {
+  document.getElementById("home").style.display = "none";
+  document.getElementById("auth").style.display = "none";
+  document.getElementById("dashboard").style.display = "none";
+  document.getElementById("practice").style.display = "none";
+  document.getElementById("result").style.display = "none";
+}
+
+function showHome() {
+  hideAll();
+  document.getElementById("home").style.display = "block";
+}
+
+function showAuth(mode) {
+  hideAll();
+
+  authMode = mode;
+
+  document.getElementById("auth").style.display = "block";
+  document.getElementById("authTitle").textContent =
+    mode === "login" ? "Login to Your Account" : "Create New Account";
+
+  document.getElementById("nameField").style.display =
+    mode === "login" ? "none" : "block";
+
+  document.getElementById("authMessage").textContent = "";
+}
+
+function submitAuth() {
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  if (!email || !password || (authMode === "signup" && !name)) {
+    document.getElementById("authMessage").textContent =
+      "Please fill all required fields.";
+    return;
+  }
+
+  if (authMode === "signup") {
+    const users = JSON.parse(localStorage.getItem("users") || "{}");
+
+    if (users[email]) {
+      document.getElementById("authMessage").textContent =
+        "Account already exists. Please login.";
+      return;
+    }
+
+    users[email] = {
+      name: name,
+      password: password,
+      papers: 0,
+      scores: []
+    };
+
+    localStorage.setItem("users", JSON.stringify(users));
+
+    currentUser = users[email];
+    currentUser.email = email;
+
+    showDashboard();
+
+  } else {
+    const users = JSON.parse(localStorage.getItem("users") || "{}");
+
+    if (!users[email] || users[email].password !== password) {
+      document.getElementById("authMessage").textContent =
+        "Invalid email or password.";
+      return;
+    }
+
+    currentUser = users[email];
+    currentUser.email = email;
+
+    showDashboard();
+  }
+}
+
+function showDashboard() {
+  hideAll();
+
+  document.getElementById("dashboard").style.display = "block";
+
+  document.getElementById("welcome").textContent =
+    "Welcome back, " + currentUser.name + "! 👋";
+
+  document.getElementById("userName").textContent =
+    currentUser.name;
+
+  document.getElementById("papersSolved").textContent =
+    currentUser.papers;
+
+  const scores = currentUser.scores || [];
+
+  const average = scores.length
+    ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length)
+    : 0;
+
+  document.getElementById("averageScore").textContent =
+    average + "%";
+}
+
+function startPractice(subject) {
+  if (!currentUser) {
+    alert("Please login first.");
+    showAuth("login");
+    return;
+  }
+
+  currentSubject = subject;
+  currentQuestion = 0;
+  score = 0;
+
+  hideAll();
+  document.getElementById("practice").style.display = "block";
+
+  showQuestion();
+}
+
+function showQuestion() {
+  const question = papers[currentSubject][currentQuestion];
+
+  document.getElementById("practiceTitle").textContent =
+    currentSubject + " - Daily Practice Paper";
+
+  document.getElementById("questionNumber").textContent =
+    "Question " + (currentQuestion + 1) + " of " + papers[currentSubject].length;
+
+  document.getElementById("questionText").textContent =
+    question.q;
+
+  selectedAnswer = null;
+
+  const optionsDiv = document.getElementById("options");
+  optionsDiv.innerHTML = "";
+
+  question.options.forEach((option, index) => {
+    const label = document.createElement("label");
+    label.className = "option";
+
+    label.innerHTML = `
+      <input type="radio" name="answer" value="${index}">
+      ${option}
+    `;
+
+    label.querySelector("input").addEventListener("change", function() {
+      selectedAnswer = index;
+    });
+
+    optionsDiv.appendChild(label);
+  });
+}
+
+function nextQuestion() {
+  if (selectedAnswer === null) {
+    alert("Please select an answer.");
+    return;
+  }
+
+  const question = papers[currentSubject][currentQuestion];
+
+  if (selectedAnswer === question.answer) {
+    score++;
+  }
+
+  currentQuestion++;
+
+  if (currentQuestion < papers[currentSubject].length) {
+    showQuestion();
+  } else {
+    finishPractice();
+  }
+}
+
+function finishPractice() {
+  const total = papers[currentSubject].length;
+  const percentage = Math.round((score / total) * 100);
+
+  currentUser.papers++;
+  currentUser.scores.push(percentage);
+
+  const users = JSON.parse(localStorage.getItem("users") || "{}");
+  users[currentUser.email] = currentUser;
+  localStorage.setItem("users", JSON.stringify(users));
+
+  hideAll();
+
+  document.getElementById("result").style.display = "block";
+
+  document.getElementById("scoreText").textContent =
+    percentage + "%";
+
+  document.getElementById("correctText").textContent =
+    "Correct Answers: " + score + " / " + total;
+}
+
+function logout() {
+  currentUser = null;
+  showHome();
+}
+</script>
+
+</body>
+  </html>
